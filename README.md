@@ -37,7 +37,7 @@ Finally, launch Sorta :
 
     sorta sort
 
-Everything matching one of your rules will be moved. In this case, the file `doc--cv.pdf` will be moved at `~/documents/cv.pdf`, or `friday.mp3` at `~/music/friday.mp3`.
+Everything file matching one of your rules will be moved. In this case, the file `doc--cv.pdf` will be moved at `~/documents/cv.pdf`, or `friday.mp3` at `~/music/friday.mp3`.
 
 ## The config file
 The rules (and other options) are stored in the `.sortaconfig` file at the root of the drop folder.
