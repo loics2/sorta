@@ -41,6 +41,7 @@ class DropFolder(object):
                         format='%(asctime)s [%(levelname)-5.5s]  %(message)s',
                         handlers=[logging.StreamHandler()])
 
+
     def _get_destination(self, element):
         """Find the right destination corresponding to the element (file or folder) name.
         
@@ -69,6 +70,7 @@ class DropFolder(object):
 
         return dest
     
+
     @staticmethod
     def init_folder(path):
         """Initialize a drop folder.
@@ -92,6 +94,7 @@ class DropFolder(object):
         with open(os.path.join(path, CONFIG_FILE_NAME), mode='w') as configfile:
             config.write(configfile)
     
+
     def sort(self):
         """Sort the files inside the drop folder."""
         for elt in os.listdir(self.path):
@@ -106,6 +109,7 @@ class DropFolder(object):
                 logging.warning(str(e))
             except Error:
                 logging.warning("error while moving the element %s", elt)
+
 
     def add_rule(self, element_type, name, value):
         """Add a sorting rule to the .sortaconfig file.
@@ -123,6 +127,7 @@ class DropFolder(object):
 
         with open(self.config_path, mode='w') as configfile:
             self.config.write(configfile)
+
 
     def remove_rule(self, element_type, name):
         """Remove a rule from the .sortaconfig file.
