@@ -59,3 +59,6 @@ Sorta has been tested on Fedora 23, but should work on most of the platforms, no
 
 ## Contributions
 Every contribution is accepted, feel free to make a pull request and I will happily look at it!
+
+Thanks to the contributors :
+* @ilevn
