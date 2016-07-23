@@ -18,7 +18,7 @@ def cli():
                         handlers=[logging.StreamHandler()])
 
 @cli.command()
-@click.option('--path', default=".", type=click.Path(exists=False,
+@click.option('--path', default=".", type=click.Path(exists=True,
                                                      file_okay=False,
                                                      dir_okay=True,
                                                      writable=True,
@@ -52,7 +52,7 @@ def sort(path):
                                          writable=True,
                                          readable=True,
                                          resolve_path=True))
-@click.option('--path', default=".", type=click.Path(exists=False,
+@click.option('--path', default=".", type=click.Path(exists=True,
                                                      file_okay=False,
                                                      dir_okay=True,
                                                      writable=True,
@@ -74,7 +74,7 @@ def add(element_type, name, value, path):
 @cli.command()
 @click.argument('element_type', type=click.Choice(['prefix, ext']))
 @click.argument('name', type=click.STRING)
-@click.option('--path', default=".", type=click.Path(exists=False,
+@click.option('--path', default=".", type=click.Path(exists=True,
                                                      file_okay=False,
                                                      dir_okay=True,
                                                      writable=True,
