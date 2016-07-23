@@ -1,14 +1,14 @@
 #! /usr/bin/python3
 
 import configparser
-import click
 import logging
 import os
 from shutil import move, Error
-from sys import exit
-from time import time, sleep
+
+import click
 
 CONFIG_FILE_NAME = ".sortaconfig"
+
 
 @click.group()
 def cli():
@@ -16,6 +16,7 @@ def cli():
     logging.basicConfig(level=logging.INFO,
                         format='%(asctime)s [%(levelname)-5.5s]  %(message)s',
                         handlers=[logging.StreamHandler()])
+
 
 @cli.command()
 @click.option('--path', default=".", type=click.Path(exists=False,
@@ -42,6 +43,7 @@ def sort(path):
             logging.warning(str(e))
         except Error:
             logging.warning("error while moving the element %s", elt)
+
 
 @cli.command()
 @click.argument('element_type', type=click.Choice(['prefix', 'ext']))
@@ -71,8 +73,9 @@ def add(element_type, name, value, path):
     with open(config_path, mode='w') as configfile:
         config.write(configfile)
 
+
 @cli.command()
-@click.argument('element_type', type=click.Choice(['prefix, ext']))
+@click.argument('element_type', type=click.Choice(['prefix', 'ext']))
 @click.argument('name', type=click.STRING)
 @click.option('--path', default=".", type=click.Path(exists=False,
                                                      file_okay=False,
@@ -86,12 +89,13 @@ def rm(element_type, name, path):
     config = get_config(config_path)
 
     if element_type == 'prefix':
-        config.remove('prefix', name)
+        config.remove_option('prefix', name)
     else:
         config.set('extension', name)
 
     with open(config_path, mode='w') as configfile:
         config.write(configfile)
+
 
 @cli.command()
 @click.option('--path', default=".", type=click.Path(exists=False,
@@ -117,12 +121,14 @@ def init(path):
     with open(os.path.join(path, '.sortaconfig'), mode='w') as configfile:
         config.write(configfile)
 
+
 def get_config(path):
     """Parse the config file and return a ConfigParser object."""
     config = configparser.ConfigParser()
     config.read_file(open(path))
 
     return config
+
 
 def get_destination(element, config):
     """Find the right destination corresponding to the element name."""
