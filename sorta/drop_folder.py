@@ -13,7 +13,7 @@ class DropFolder(object):
     """This class is the representation of a Sorta drop folder.
     
     A Sorta drop folder is a folder managed by Sorta. It must contain a .sortaconfig file. 
-    The DropFolder object cannot be instanciated with an invalid drop folder (it will raise a FileNotFoundError).
+    The DropFolder object cannot be instantiated with an invalid drop folder (it will raise a FileNotFoundError).
     
     """
 
