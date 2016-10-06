@@ -1,4 +1,4 @@
-"""This module contains everything needed to represent a Sorta drop folder"""
+"""This module contains everything needed to represent a Sorta drop folder."""
 
 import configparser
 import logging
@@ -9,24 +9,22 @@ from shutil import move, Error
 CONFIG_FILE_NAME = ".sortaconfig"
 
 class DropFolder(object):
-
     """This class is the representation of a Sorta drop folder.
     
     A Sorta drop folder is a folder managed by Sorta. It must contain a .sortaconfig file. 
-    The DropFolder object cannot be instantiated with an invalid drop folder (it will raise a FileNotFoundError).
-    
+    The DropFolder object cannot be instantiated with an invalid drop folder
+         (it will raise a FileNotFoundError).
     """
 
     def __init__(self, path):
-        """Initialize a DropFolder object
-        
+        """Initialize a DropFolder object.
+
         Args :
             path (str) : path of the drop folder
-            
+
         Raises :
-            FileNotFoundError : if the folder is not correctly initialized (the given path or the
-                                .sortaconfig  doesn't exist)
-                                
+            FileNotFoundError : if the folder is not correctly initialized 
+                (the given path or the .sortaconfig  doesn't exist)
         """
         self.path = path
         self.config_path = os.path.join(path, CONFIG_FILE_NAME)
@@ -74,10 +72,9 @@ class DropFolder(object):
     @staticmethod
     def init_folder(path):
         """Initialize a drop folder.
-        
+
         This function creates the folder at the given path if needed, and write the default
         .sortaconfig file. If a .sortaconfig file already exists, it will be resetted
-
         """
         if not os.path.exists(path):
             os.mkdir(path)
@@ -93,7 +90,7 @@ class DropFolder(object):
 
         with open(os.path.join(path, CONFIG_FILE_NAME), mode='w') as configfile:
             config.write(configfile)
-    
+
 
     def sort(self):
         """Sort the files inside the drop folder."""
@@ -113,7 +110,7 @@ class DropFolder(object):
 
     def add_rule(self, element_type, name, value):
         """Add a sorting rule to the .sortaconfig file.
-        
+
         Args :
             element_type (str, ['prefix'|'ext']) : type of rule to add
             name (str)                           : name of the rule
@@ -144,3 +141,4 @@ class DropFolder(object):
 
         with open(self.config_path, mode='w') as configfile:
             self.config.write(configfile)
+

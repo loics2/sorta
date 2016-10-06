@@ -4,7 +4,10 @@ from .drop_folder import DropFolder
 
 @click.group()
 def cli():
-    """Sorta is a tool helping you to sort your files."""
+    """Entry point for click.
+
+    See http://click.pocoo.org/5/quickstart/, Nesting Commands.
+    """
 
 
 @cli.command()
@@ -66,3 +69,4 @@ def rm(element_type, name, path):
 def init(path):
     """Create an empty Sorta drop folder or reinitialize an existing one."""
     DropFolder.init_folder(path)
+
